@@ -3,125 +3,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home</title>
+<title>HOME</title>
 
 <style>
 body{
     margin:0;
     font-family:sans-serif;
-    background: radial-gradient(circle at top, #0f2a3f, #0b1c2c);
+    background:linear-gradient(135deg,#0b1c2c,#0f2e46);
     color:white;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:center;
+    margin:20px;
+    padding:10px;
+    background:rgba(255,255,255,0.05);
+    border-radius:50px;
+    backdrop-filter:blur(10px);
+}
+
+.navbar ul{
+    display:flex;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.navbar li{
+    margin:0 5px;
+}
+
+.navbar a{
+    display:block;
+    padding:10px 25px;
+    color:white;
+    text-decoration:none;
+    border-radius:50px;
+    transition:0.3s;
+}
+
+/* efek hover */
+.navbar a:hover{
+    background:linear-gradient(45deg,#00f2ff,#00aaff);
 }
 
 /* HERO */
 .hero{
     text-align:center;
-    padding:100px 20px;
+    padding:80px 20px;
 }
 
 .hero h1{
-    font-size:42px;
-    text-shadow:0 0 15px rgba(0,242,255,0.4);
+    font-size:40px;
+    margin-bottom:10px;
 }
 
-.typing{
+.hero span{
     color:#00f2ff;
     text-shadow:0 0 10px #00f2ff;
 }
 
+.hero p{
+    color:#ccc;
+}
+
 /* BUTTON */
-.cta{
-    margin-top:30px;
+.btn{
+    margin-top:20px;
 }
 
-.cta button{
+.btn a{
+    display:inline-block;
     margin:10px;
-    padding:14px 28px;
-    border:none;
-    border-radius:12px;
+    padding:12px 25px;
+    border-radius:25px;
     background:linear-gradient(45deg,#00f2ff,#00aaff);
-    color:black;
-    font-weight:bold;
-    cursor:pointer;
+    color:white;
+    text-decoration:none;
     transition:0.3s;
 }
 
-.cta button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 0 20px rgba(0,242,255,0.6);
+.btn a:hover{
+    transform:scale(1.05);
 }
 
-/* CARD SECTION */
-.container{
-    padding:20px;
-}
-
+/* CARD */
 .card{
+    margin:20px;
+    padding:20px;
+    border-radius:20px;
     background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(10px);
-    border-radius:16px;
-    padding:25px;
-    margin-bottom:25px;
     text-align:center;
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 25px rgba(0,242,255,0.3);
+    backdrop-filter:blur(10px);
 }
 
 .card h2{
-    margin-bottom:10px;
     color:#00f2ff;
-}
-
-/* FLOAT BUTTON */
-.floating{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:linear-gradient(45deg,#00f2ff,#00aaff);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    box-shadow:0 0 20px rgba(0,242,255,0.6);
-    transition:0.3s;
-}
-
-.floating:hover{
-    transform:scale(1.1);
-}
-
-/* CLOCK */
-.clock{
-    text-align:center;
-    margin-top:15px;
-    opacity:0.7;
 }
 </style>
 </head>
 
 <body>
 
-<div class="clock" id="clock">00:00:00</div>
+<!-- NAVBAR -->
+<nav class="navbar">
+<ul>
+<li><a href="home.html">Home</a></li>
+<li><a href="menu.html">Menu</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
 
+<!-- HERO -->
 <div class="hero">
-<h1>Next Project <span class="typing"></span></h1>
+<h1>Next Project <span>RPG</span></h1>
 <p>Platform modern untuk bot, automation, dan gaming.</p>
 
-<div class="cta">
-<button onclick="goto('https://wa.me')">Sewa Bot</button>
-<button onclick="goto('https://example.com')">Lihat Paket</button>
+<div class="btn">
+<a href="#">Sewa Bot</a>
+<a href="#">Lihat Paket</a>
 </div>
 </div>
 
-<div class="container">
-
+<!-- CONTENT -->
 <div class="card">
 <h2>Paket Bot</h2>
 <p>Berbagai pilihan paket sesuai kebutuhan Anda.</p>
@@ -136,58 +143,6 @@ body{
 <h2>Support</h2>
 <p>Layanan bantuan cepat dan responsif.</p>
 </div>
-
-</div>
-
-<div class="floating">⚙️</div>
-
-<script>
-/* CLOCK */
-function updateClock(){
-    const now=new Date()
-    let h=String(now.getHours()).padStart(2,"0")
-    let m=String(now.getMinutes()).padStart(2,"0")
-    let s=String(now.getSeconds()).padStart(2,"0")
-    document.getElementById("clock").innerText=`${h}:${m}:${s}`
-}
-setInterval(updateClock,1000)
-
-/* TYPING */
-const words = ["HUTAO","Alya","Gaming","RPG","Smart"];
-let i=0,j=0;
-let currentWord="";
-let isDeleting=false;
-const el=document.querySelector(".typing");
-
-function typeEffect(){
-    currentWord=words[i];
-
-    if(!isDeleting){
-        el.textContent=currentWord.substring(0,j+1);
-        j++;
-        if(j===currentWord.length){
-            isDeleting=true;
-            setTimeout(typeEffect,1000);
-            return;
-        }
-    }else{
-        el.textContent=currentWord.substring(0,j-1);
-        j--;
-        if(j===0){
-            isDeleting=false;
-            i=(i+1)%words.length;
-        }
-    }
-
-    setTimeout(typeEffect,isDeleting?50:100);
-}
-typeEffect();
-
-/* NAV */
-function goto(url){
-    window.location.href=url;
-}
-</script>
 
 </body>
 </html>
