@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home</title>
+<title>ALYA MD</title>
 
 <style>
 body{
@@ -16,7 +16,7 @@ body{
 /* NAVBAR */
 .navbar{
     position:relative;
-    margin:20px;
+    margin:20px auto;
     padding:10px;
     background:rgba(255,255,255,0.05);
     border-radius:50px;
@@ -32,9 +32,14 @@ body{
 }
 
 .navbar li{
-    padding:10px 25px;
-    cursor:pointer;
     z-index:2;
+}
+
+.navbar li a{
+    display:block;
+    padding:10px 25px;
+    color:white;
+    text-decoration:none;
 }
 
 /* INDICATOR */
@@ -57,7 +62,6 @@ body{
 
 .hero h1{
     font-size:42px;
-    text-shadow:0 0 15px rgba(0,242,255,0.4);
 }
 
 .typing{
@@ -111,7 +115,7 @@ body{
     color:#00f2ff;
 }
 
-/* FLOAT BUTTON */
+/* FLOAT */
 .floating{
     position:fixed;
     bottom:20px;
@@ -124,7 +128,6 @@ body{
     align-items:center;
     justify-content:center;
     cursor:pointer;
-    box-shadow:0 0 20px rgba(0,242,255,0.6);
 }
 </style>
 </head>
@@ -135,16 +138,16 @@ body{
 <nav class="navbar">
 <div class="indicator"></div>
 <ul>
-<li>Home</li>
-<li>About</li>
-<li>Services</li>
-<li>Projects</li>
-<li>Contact</li>
+<li><a href="home.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="contact.html">Contact</a></li>
 </ul>
 </nav>
 
 <!-- CLOCK -->
-<div class="clock" id="clock" style="text-align:center; opacity:0.7;">00:00:00</div>
+<div id="clock" style="text-align:center;opacity:0.7;">00:00:00</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -225,7 +228,7 @@ typeEffect()
 const items=document.querySelectorAll(".navbar ul li")
 const indicator=document.querySelector(".indicator")
 
-items.forEach((item)=>{
+items.forEach(item=>{
     item.addEventListener("click",()=>{
         indicator.style.width=item.offsetWidth+"px"
         indicator.style.left=item.offsetLeft+"px"
@@ -238,7 +241,7 @@ window.onload=()=>{
     indicator.style.left=first.offsetLeft+"px"
 }
 
-/* NAV BUTTON */
+/* BUTTON */
 function goto(url){
     window.location.href=url
 }
