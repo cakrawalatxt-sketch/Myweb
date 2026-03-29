@@ -11,6 +11,7 @@ body{
     font-family:sans-serif;
     background:linear-gradient(135deg,#0b1c2c,#0f2e46);
     color:white;
+    overflow-x:hidden;
 }
 
 /* NAVBAR */
@@ -22,21 +23,10 @@ body{
     background:rgba(255,255,255,0.05);
     border-radius:50px;
     backdrop-filter:blur(10px);
-}
-
-.navbar ul{
-    display:flex;
-    list-style:none;
-    margin:0;
-    padding:0;
-}
-
-.navbar li{
-    margin:0 5px;
+    animation:fadeDown 0.8s ease;
 }
 
 .navbar a{
-    display:block;
     padding:10px 25px;
     color:white;
     text-decoration:none;
@@ -44,25 +34,25 @@ body{
     transition:0.3s;
 }
 
-/* efek hover */
 .navbar a:hover{
     background:linear-gradient(45deg,#00f2ff,#00aaff);
+    box-shadow:0 0 15px #00f2ff;
 }
 
 /* HERO */
 .hero{
     text-align:center;
     padding:80px 20px;
+    animation:fadeUp 1s ease;
 }
 
 .hero h1{
     font-size:40px;
-    margin-bottom:10px;
 }
 
 .hero span{
     color:#00f2ff;
-    text-shadow:0 0 10px #00f2ff;
+    text-shadow:0 0 15px #00f2ff;
 }
 
 .hero p{
@@ -70,10 +60,6 @@ body{
 }
 
 /* BUTTON */
-.btn{
-    margin-top:20px;
-}
-
 .btn a{
     display:inline-block;
     margin:10px;
@@ -86,38 +72,65 @@ body{
 }
 
 .btn a:hover{
-    transform:scale(1.05);
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 10px 20px rgba(0,255,255,0.3);
 }
 
 /* CARD */
 .card{
     margin:20px;
-    padding:20px;
+    padding:25px;
     border-radius:20px;
     background:rgba(255,255,255,0.05);
     text-align:center;
     backdrop-filter:blur(10px);
+    opacity:0;
+    transform:translateY(40px);
+    animation:cardShow 1s forwards;
+}
+
+.card:nth-child(1){animation-delay:0.3s;}
+.card:nth-child(2){animation-delay:0.6s;}
+.card:nth-child(3){animation-delay:0.9s;}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 10px 30px rgba(0,255,255,0.2);
 }
 
 .card h2{
     color:#00f2ff;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeDown{
+    from{opacity:0; transform:translateY(-30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes cardShow{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
-<ul>
-<li><a href="home.html">Home</a></li>
-<li><a href="menu.html">Menu</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
+<a href="home.html">Home</a>
+<a href="menu.html">Menu</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
 <h1>Next Project <span>RPG</span></h1>
 <p>Platform modern untuk bot, automation, dan gaming.</p>
@@ -128,7 +141,6 @@ body{
 </div>
 </div>
 
-<!-- CONTENT -->
 <div class="card">
 <h2>Paket Bot</h2>
 <p>Berbagai pilihan paket sesuai kebutuhan Anda.</p>
