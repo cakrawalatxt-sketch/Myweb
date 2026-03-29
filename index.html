@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALYA MD</title>
+
+<style>
+body{
+    margin:0;
+    font-family:sans-serif;
+    background:#0b1c2c;
+    color:white;
+}
+
+/* navbar */
+.navbar{
+    position:relative;
+    margin:20px;
+    padding:10px;
+    background:rgba(255,255,255,0.05);
+    border-radius:50px;
+}
+
+.navbar ul{
+    display:flex;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.navbar li{
+    padding:10px 25px;
+    cursor:pointer;
+    z-index:2;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+}
+
+/* indicator */
+.indicator{
+    position:absolute;
+    height:40px;
+    background:linear-gradient(45deg,#00f2ff,#00aaff);
+    border-radius:50px;
+    top:10px;
+    left:10px;
+    transition:0.3s;
+}
+
+/* content */
+.content{
+    padding:30px;
+}
+
+section{
+    display:none;
+}
+
+section.active{
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="indicator"></div>
+<ul>
+<li>
+    <a href="home.html">Home</a>
+</li>
+<li data-target="menu">Menu</li>
+<li data-target="about">About</li>
+<li data-target="contact">Contact</li>
+</ul>
+</nav>
+
+<div class="content">
+
+<section id="menu" class="active">
+<h1>Menu</h1>
+<p>Berisi fitur atau isi dari bot Anda.</p>
+</section>
+
+<section id="about">
+<h1>About</h1>
+<p>Informasi tentang Anda sebagai developer.</p>
+</section>
+
+<section id="contact">
+<h1>Contact</h1>
+<p>Kontak yang bisa dihubungi.</p>
+</section>
+
+</div>
+
+<script>
+const items=document.querySelectorAll(".navbar li")
+const indicator=document.querySelector(".indicator")
+const sections=document.querySelectorAll("section")
+
+items.forEach(item=>{
+    item.addEventListener("click",()=>{
+
+        // skip kalau itu link (Home)
+        if(item.querySelector("a")) return
+
+        // pindah indicator
+        indicator.style.width=item.offsetWidth+"px"
+        indicator.style.left=item.offsetLeft+"px"
+
+        // ganti konten
+        sections.forEach(sec=>sec.classList.remove("active"))
+        document.getElementById(item.dataset.target).classList.add("active")
+    })
+})
+
+window.onload=()=>{
+    const first=items[0]
+    indicator.style.width=first.offsetWidth+"px"
+    indicator.style.left=first.offsetLeft+"px"
+}
+</script>
+
+</body>
+</html>
