@@ -3,143 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HOME</title>
+<title>Home</title>
 
 <style>
 body{
     margin:0;
     font-family:sans-serif;
-    background:linear-gradient(135deg,#0b1c2c,#0f2e46);
+    background: radial-gradient(circle at top, #0f2a3f, #0b1c2c);
     color:white;
-    overflow-x:hidden;
 }
 
 /* NAVBAR */
 .navbar{
-    display:flex;
-    justify-content:center;
+    position:relative;
     margin:20px;
     padding:10px;
     background:rgba(255,255,255,0.05);
     border-radius:50px;
     backdrop-filter:blur(10px);
-    animation:fadeDown 0.8s ease;
+    width:fit-content;
 }
 
-.navbar a{
+.navbar ul{
+    display:flex;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.navbar li{
     padding:10px 25px;
-    color:white;
-    text-decoration:none;
+    cursor:pointer;
+    z-index:2;
+}
+
+/* INDICATOR */
+.indicator{
+    position:absolute;
+    height:40px;
+    background:linear-gradient(45deg,#00f2ff,#00aaff);
     border-radius:50px;
     transition:0.3s;
-}
-
-.navbar a:hover{
-    background:linear-gradient(45deg,#00f2ff,#00aaff);
-    box-shadow:0 0 15px #00f2ff;
+    z-index:1;
+    top:10px;
+    left:10px;
 }
 
 /* HERO */
 .hero{
     text-align:center;
     padding:80px 20px;
-    animation:fadeUp 1s ease;
 }
 
 .hero h1{
-    font-size:40px;
+    font-size:42px;
+    text-shadow:0 0 15px rgba(0,242,255,0.4);
 }
 
-.hero span{
+.typing{
     color:#00f2ff;
-    text-shadow:0 0 15px #00f2ff;
-}
-
-.hero p{
-    color:#ccc;
+    text-shadow:0 0 10px #00f2ff;
 }
 
 /* BUTTON */
-.btn a{
-    display:inline-block;
+.cta{
+    margin-top:30px;
+}
+
+.cta button{
     margin:10px;
-    padding:12px 25px;
-    border-radius:25px;
+    padding:14px 28px;
+    border:none;
+    border-radius:12px;
     background:linear-gradient(45deg,#00f2ff,#00aaff);
-    color:white;
-    text-decoration:none;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
     transition:0.3s;
 }
 
-.btn a:hover{
-    transform:translateY(-5px) scale(1.05);
-    box-shadow:0 10px 20px rgba(0,255,255,0.3);
+.cta button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(0,242,255,0.6);
 }
 
 /* CARD */
-.card{
-    margin:20px;
-    padding:25px;
-    border-radius:20px;
-    background:rgba(255,255,255,0.05);
-    text-align:center;
-    backdrop-filter:blur(10px);
-    opacity:0;
-    transform:translateY(40px);
-    animation:cardShow 1s forwards;
+.container{
+    padding:20px;
 }
 
-.card:nth-child(1){animation-delay:0.3s;}
-.card:nth-child(2){animation-delay:0.6s;}
-.card:nth-child(3){animation-delay:0.9s;}
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:25px;
+    text-align:center;
+    transition:0.3s;
+}
 
 .card:hover{
-    transform:translateY(-10px) scale(1.02);
-    box-shadow:0 10px 30px rgba(0,255,255,0.2);
+    transform:translateY(-5px);
+    box-shadow:0 0 25px rgba(0,242,255,0.3);
 }
 
 .card h2{
     color:#00f2ff;
 }
 
-/* ANIMATION */
-@keyframes fadeUp{
-    from{opacity:0; transform:translateY(30px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-@keyframes fadeDown{
-    from{opacity:0; transform:translateY(-30px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-@keyframes cardShow{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+/* FLOAT BUTTON */
+.floating{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#00f2ff,#00aaff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 0 20px rgba(0,242,255,0.6);
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
-<a href="home.html">Home</a>
-<a href="menu.html">Menu</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
+<div class="indicator"></div>
+<ul>
+<li>Home</li>
+<li>About</li>
+<li>Services</li>
+<li>Projects</li>
+<li>Contact</li>
+</ul>
 </nav>
 
+<!-- CLOCK -->
+<div class="clock" id="clock" style="text-align:center; opacity:0.7;">00:00:00</div>
+
+<!-- HERO -->
 <div class="hero">
-<h1>Next Project <span>RPG</span></h1>
+<h1>Next Project <span class="typing"></span></h1>
 <p>Platform modern untuk bot, automation, dan gaming.</p>
 
-<div class="btn">
-<a href="#">Sewa Bot</a>
-<a href="#">Lihat Paket</a>
+<div class="cta">
+<button onclick="goto('https://wa.me')">Sewa Bot</button>
+<button onclick="goto('https://example.com')">Lihat Paket</button>
 </div>
 </div>
+
+<!-- CONTENT -->
+<div class="container">
 
 <div class="card">
 <h2>Paket Bot</h2>
@@ -155,6 +174,75 @@ body{
 <h2>Support</h2>
 <p>Layanan bantuan cepat dan responsif.</p>
 </div>
+
+</div>
+
+<div class="floating">⚙️</div>
+
+<script>
+/* CLOCK */
+function updateClock(){
+    const now=new Date()
+    let h=String(now.getHours()).padStart(2,"0")
+    let m=String(now.getMinutes()).padStart(2,"0")
+    let s=String(now.getSeconds()).padStart(2,"0")
+    document.getElementById("clock").innerText=`${h}:${m}:${s}`
+}
+setInterval(updateClock,1000)
+
+/* TYPING */
+const words=["HUTAO","Alya","Gaming","RPG","Smart"]
+let i=0,j=0
+let currentWord=""
+let isDeleting=false
+const el=document.querySelector(".typing")
+
+function typeEffect(){
+    currentWord=words[i]
+
+    if(!isDeleting){
+        el.textContent=currentWord.substring(0,j+1)
+        j++
+        if(j===currentWord.length){
+            isDeleting=true
+            setTimeout(typeEffect,1000)
+            return
+        }
+    }else{
+        el.textContent=currentWord.substring(0,j-1)
+        j--
+        if(j===0){
+            isDeleting=false
+            i=(i+1)%words.length
+        }
+    }
+
+    setTimeout(typeEffect,isDeleting?50:100)
+}
+typeEffect()
+
+/* NAVBAR INDICATOR */
+const items=document.querySelectorAll(".navbar ul li")
+const indicator=document.querySelector(".indicator")
+
+items.forEach((item)=>{
+    item.addEventListener("click",()=>{
+        indicator.style.width=item.offsetWidth+"px"
+        indicator.style.left=item.offsetLeft+"px"
+    })
+})
+
+window.onload=()=>{
+    const first=items[0]
+    indicator.style.width=first.offsetWidth+"px"
+    indicator.style.left=first.offsetLeft+"px"
+}
+
+/* NAV BUTTON */
+function goto(url){
+    window.location.href=url
+}
+</script>
 
 </body>
 </html>
