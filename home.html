@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+
+<style>
+body{
+    margin:0;
+    font-family:sans-serif;
+    background: radial-gradient(circle at top, #0f2a3f, #0b1c2c);
+    color:white;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.hero h1{
+    font-size:42px;
+    text-shadow:0 0 15px rgba(0,242,255,0.4);
+}
+
+.typing{
+    color:#00f2ff;
+    text-shadow:0 0 10px #00f2ff;
+}
+
+/* BUTTON */
+.cta{
+    margin-top:30px;
+}
+
+.cta button{
+    margin:10px;
+    padding:14px 28px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#00f2ff,#00aaff);
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.cta button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(0,242,255,0.6);
+}
+
+/* CARD SECTION */
+.container{
+    padding:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:25px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px rgba(0,242,255,0.3);
+}
+
+.card h2{
+    margin-bottom:10px;
+    color:#00f2ff;
+}
+
+/* FLOAT BUTTON */
+.floating{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#00f2ff,#00aaff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 0 20px rgba(0,242,255,0.6);
+    transition:0.3s;
+}
+
+.floating:hover{
+    transform:scale(1.1);
+}
+
+/* CLOCK */
+.clock{
+    text-align:center;
+    margin-top:15px;
+    opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="clock" id="clock">00:00:00</div>
+
+<div class="hero">
+<h1>Next Project <span class="typing"></span></h1>
+<p>Platform modern untuk bot, automation, dan gaming.</p>
+
+<div class="cta">
+<button onclick="goto('https://wa.me')">Sewa Bot</button>
+<button onclick="goto('https://example.com')">Lihat Paket</button>
+</div>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h2>Paket Bot</h2>
+<p>Berbagai pilihan paket sesuai kebutuhan Anda.</p>
+</div>
+
+<div class="card">
+<h2>Fitur Unggulan</h2>
+<p>Anti delay, uptime tinggi, performa stabil.</p>
+</div>
+
+<div class="card">
+<h2>Support</h2>
+<p>Layanan bantuan cepat dan responsif.</p>
+</div>
+
+</div>
+
+<div class="floating">⚙️</div>
+
+<script>
+/* CLOCK */
+function updateClock(){
+    const now=new Date()
+    let h=String(now.getHours()).padStart(2,"0")
+    let m=String(now.getMinutes()).padStart(2,"0")
+    let s=String(now.getSeconds()).padStart(2,"0")
+    document.getElementById("clock").innerText=`${h}:${m}:${s}`
+}
+setInterval(updateClock,1000)
+
+/* TYPING */
+const words = ["HUTAO","Alya","Gaming","RPG","Smart"];
+let i=0,j=0;
+let currentWord="";
+let isDeleting=false;
+const el=document.querySelector(".typing");
+
+function typeEffect(){
+    currentWord=words[i];
+
+    if(!isDeleting){
+        el.textContent=currentWord.substring(0,j+1);
+        j++;
+        if(j===currentWord.length){
+            isDeleting=true;
+            setTimeout(typeEffect,1000);
+            return;
+        }
+    }else{
+        el.textContent=currentWord.substring(0,j-1);
+        j--;
+        if(j===0){
+            isDeleting=false;
+            i=(i+1)%words.length;
+        }
+    }
+
+    setTimeout(typeEffect,isDeleting?50:100);
+}
+typeEffect();
+
+/* NAV */
+function goto(url){
+    window.location.href=url;
+}
+</script>
+
+</body>
+</html>
