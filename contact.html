@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+
+<style>
+body{
+    margin:0;
+    font-family:sans-serif;
+    background: radial-gradient(circle at top, #0f2a3f, #0b1c2c);
+    color:white;
+}
+
+/* NAVBAR */
+.navbar{
+    position:relative;
+    margin:20px auto;
+    padding:10px;
+    background:rgba(255,255,255,0.05);
+    border-radius:50px;
+    backdrop-filter:blur(10px);
+    width:fit-content;
+}
+
+.navbar ul{
+    display:flex;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.navbar li{ z-index:2; }
+
+.navbar a{
+    display:block;
+    padding:10px 25px;
+    color:white;
+    text-decoration:none;
+}
+
+/* INDICATOR */
+.indicator{
+    position:absolute;
+    height:40px;
+    background:linear-gradient(45deg,#00f2ff,#00aaff);
+    border-radius:50px;
+    transition:0.3s;
+    z-index:1;
+    top:10px;
+    left:10px;
+}
+
+/* PROFILE */
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    padding:30px;
+    width:360px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.card img.pp{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:3px solid white;
+    object-fit:cover;
+}
+
+.card h1{ margin:10px 0 5px; }
+
+.info{
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:15px;
+}
+
+.desc{
+    font-size:14px;
+    line-height:1.6;
+    text-align:justify;
+    margin-bottom:20px;
+}
+
+/* SOCIAL */
+.social{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn{
+    width:55px;
+    height:55px;
+    border-radius:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#222;
+    cursor:pointer;
+    transition:0.4s;
+    overflow:hidden;
+}
+
+.icon{
+    width:24px;
+    height:24px;
+    object-fit:cover;
+}
+
+/* ICON PUTIH AWAL */
+.btn img{
+    filter:brightness(0) invert(1);
+    transition:0.3s;
+}
+
+/* TEXT */
+.btn span{
+    margin-left:10px;
+    opacity:0;
+    white-space:nowrap;
+    color:white;
+    transition:0.3s;
+}
+
+.btn.active{
+    width:170px;
+    justify-content:flex-start;
+    padding-left:15px;
+}
+
+.btn.active span{ opacity:1; }
+.btn.active img{ filter:none; }
+
+/* WARNA */
+.whatsapp.active{ background:#25D366; }
+.instagram.active{ background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); }
+.tiktok.active{ background:#000; border:2px solid #ff0050; }
+.telegram.active{ background:#0088cc; }
+
+/* FLOAT */
+.floating{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#00f2ff,#00aaff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+<div class="indicator"></div>
+<ul>
+<li><a href="#" class="active">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</nav>
+
+<!-- PROFILE -->
+<div class="container">
+<div class="card">
+
+<!-- FOTO PROFIL -->
+<!-- GANTI FILE -->
+<img src="pp.png" class="pp">
+
+<h1>Razx</h1>
+
+<div class="info">
+Umur: 13 Tahun (menuju 14)<br>
+Kelas: VIII SMP
+</div>
+
+<div class="desc">
+Razx adalah seorang pelajar tingkat SMP kelas VIII yang memiliki minat besar dalam teknologi digital.
+Ia tertarik pada editing, coding, dan pengembangan website.
+<br><br>
+Selain itu, ia juga aktif dalam dunia gaming untuk melatih strategi dan fokus.
+Razx memiliki potensi besar untuk berkembang di bidang teknologi dan kreativitas digital.
+</div>
+
+<div class="social">
+
+<!-- WHATSAPP -->
+<div class="btn whatsapp" onclick="openLink(this,'https://wa.me/6285810537050')">
+    <!-- GANTI FILE ICON -->
+    <img src="wa.jpg" class="icon">
+    <span>WhatsApp</span>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="btn instagram" onclick="openLink(this,'https://instagram.com/its_mecakra')">
+    <img src="ig.jpg" class="icon">
+    <span>Instagram</span>
+</div>
+
+<!-- TIKTOK -->
+<div class="btn tiktok" onclick="openLink(this,'https://tiktok.com/@razzziy')">
+    <img src="tiktok.jpg" class="icon">
+    <span>TikTok</span>
+</div>
+
+<!-- TELEGRAM -->
+<div class="btn telegram" onclick="openLink(this,'https://t.me/YeahIamRanzxxYty')">
+    <img src="telegram.jpg" class="icon">
+    <span>Telegram</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="floating">+</div>
+
+<script>
+// NAVBAR
+const indicator = document.querySelector(".indicator");
+const links = document.querySelectorAll(".navbar a");
+
+function moveIndicator(el){
+    indicator.style.width = el.offsetWidth + "px";
+    indicator.style.left = el.offsetLeft + "px";
+}
+
+moveIndicator(document.querySelector(".active"));
+
+links.forEach(link=>{
+    link.addEventListener("click",function(){
+        document.querySelector(".active").classList.remove("active");
+        this.classList.add("active");
+        moveIndicator(this);
+    });
+});
+
+// SOCIAL
+function openLink(el,url){
+    el.classList.toggle("active");
+    setTimeout(()=>window.open(url,"_blank"),300);
+}
+</script>
+
+</body>
+</html>
