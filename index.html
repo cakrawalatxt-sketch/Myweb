@@ -3,23 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALYA MD</title>
+<title>Home</title>
 
 <style>
 body{
     margin:0;
     font-family:sans-serif;
-    background:#0b1c2c;
+    background: radial-gradient(circle at top, #0f2a3f, #0b1c2c);
     color:white;
 }
 
-/* navbar */
+/* NAVBAR */
 .navbar{
     position:relative;
-    margin:20px;
+    margin:20px auto;
     padding:10px;
     background:rgba(255,255,255,0.05);
     border-radius:50px;
+    backdrop-filter:blur(10px);
+    width:fit-content;
 }
 
 .navbar ul{
@@ -30,93 +32,205 @@ body{
 }
 
 .navbar li{
-    padding:10px 25px;
-    cursor:pointer;
     z-index:2;
 }
 
-.navbar a{
+.navbar li a{
+    display:block;
+    padding:10px 25px;
     color:white;
     text-decoration:none;
 }
 
-/* indicator */
+/* INDICATOR */
 .indicator{
     position:absolute;
     height:40px;
     background:linear-gradient(45deg,#00f2ff,#00aaff);
     border-radius:50px;
+    transition:0.3s;
+    z-index:1;
     top:10px;
     left:10px;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+.typing{
+    color:#00f2ff;
+    text-shadow:0 0 10px #00f2ff;
+}
+
+/* BUTTON */
+.cta{
+    margin-top:30px;
+}
+
+.cta button{
+    margin:10px;
+    padding:14px 28px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#00f2ff,#00aaff);
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
     transition:0.3s;
 }
 
-/* content */
-.content{
-    padding:30px;
+.cta button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(0,242,255,0.6);
 }
 
-section{
-    display:none;
+/* CARD */
+.container{
+    padding:20px;
 }
 
-section.active{
-    display:block;
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:25px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px rgba(0,242,255,0.3);
+}
+
+.card h2{
+    color:#00f2ff;
+}
+
+/* FLOAT */
+.floating{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#00f2ff,#00aaff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
 <div class="indicator"></div>
 <ul>
-<li>
-    <a href="home.html">Home</a>
-</li>
-<li data-target="menu">Menu</li>
-<li data-target="about">About</li>
-<li data-target="contact">Contact</li>
+<li><a href="home.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="contact.html">Contact</a></li>
 </ul>
 </nav>
 
-<div class="content">
+<!-- CLOCK -->
+<div id="clock" style="text-align:center;opacity:0.7;">00:00:00</div>
 
-<section id="menu" class="active">
-<h1>Menu</h1>
-<p>Berisi fitur atau isi dari bot Anda.</p>
-</section>
+<!-- HERO -->
+<div class="hero">
+<h1>Next Project <span class="typing"></span></h1>
+<p>Platform modern untuk bot, automation, dan gaming.</p>
 
-<section id="about">
-<h1>About</h1>
-<p>Informasi tentang Anda sebagai developer.</p>
-</section>
+<div class="cta">
+<button onclick="goto('https://wa.me')">Sewa Bot</button>
+<button onclick="goto('https://example.com')">Lihat Paket</button>
+</div>
+</div>
 
-<section id="contact">
-<h1>Contact</h1>
-<p>Kontak yang bisa dihubungi.</p>
-</section>
+<!-- CONTENT -->
+<div class="container">
+
+<div class="card">
+<h2>Paket Bot</h2>
+<p>Berbagai pilihan paket sesuai kebutuhan Anda.</p>
+</div>
+
+<div class="card">
+<h2>Fitur Unggulan</h2>
+<p>Anti delay, uptime tinggi, performa stabil.</p>
+</div>
+
+<div class="card">
+<h2>Support</h2>
+<p>Layanan bantuan cepat dan responsif.</p>
+</div>
 
 </div>
 
+<div class="floating">⚙️</div>
+
 <script>
-const items=document.querySelectorAll(".navbar li")
+/* CLOCK */
+function updateClock(){
+    const now=new Date()
+    let h=String(now.getHours()).padStart(2,"0")
+    let m=String(now.getMinutes()).padStart(2,"0")
+    let s=String(now.getSeconds()).padStart(2,"0")
+    document.getElementById("clock").innerText=`${h}:${m}:${s}`
+}
+setInterval(updateClock,1000)
+
+/* TYPING */
+const words=["HUTAO","Alya","Gaming","RPG","Smart"]
+let i=0,j=0
+let currentWord=""
+let isDeleting=false
+const el=document.querySelector(".typing")
+
+function typeEffect(){
+    currentWord=words[i]
+
+    if(!isDeleting){
+        el.textContent=currentWord.substring(0,j+1)
+        j++
+        if(j===currentWord.length){
+            isDeleting=true
+            setTimeout(typeEffect,1000)
+            return
+        }
+    }else{
+        el.textContent=currentWord.substring(0,j-1)
+        j--
+        if(j===0){
+            isDeleting=false
+            i=(i+1)%words.length
+        }
+    }
+
+    setTimeout(typeEffect,isDeleting?50:100)
+}
+typeEffect()
+
+/* NAVBAR INDICATOR */
+const items=document.querySelectorAll(".navbar ul li")
 const indicator=document.querySelector(".indicator")
-const sections=document.querySelectorAll("section")
 
 items.forEach(item=>{
     item.addEventListener("click",()=>{
-
-        // skip kalau itu link (Home)
-        if(item.querySelector("a")) return
-
-        // pindah indicator
         indicator.style.width=item.offsetWidth+"px"
         indicator.style.left=item.offsetLeft+"px"
-
-        // ganti konten
-        sections.forEach(sec=>sec.classList.remove("active"))
-        document.getElementById(item.dataset.target).classList.add("active")
     })
 })
 
@@ -124,6 +238,11 @@ window.onload=()=>{
     const first=items[0]
     indicator.style.width=first.offsetWidth+"px"
     indicator.style.left=first.offsetLeft+"px"
+}
+
+/* BUTTON */
+function goto(url){
+    window.location.href=url
 }
 </script>
 
