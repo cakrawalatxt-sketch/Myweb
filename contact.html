@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>contact</title>
+<title>Home</title>
 
 <style>
 body{
@@ -47,17 +47,15 @@ body{
     background:linear-gradient(45deg,#00f2ff,#00aaff);
     border-radius:50px;
     transition:0.3s;
-    z-index:1;
     top:10px;
     left:10px;
 }
 
-/* PROFILE */
+/* CARD */
 .container{
     display:flex;
     justify-content:center;
-    align-items:center;
-    padding:40px 20px;
+    padding:40px;
 }
 
 .card{
@@ -67,30 +65,14 @@ body{
     padding:30px;
     width:360px;
     text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 
-.card img.pp{
+.pp{
     width:120px;
     height:120px;
     border-radius:50%;
     border:3px solid white;
     object-fit:cover;
-}
-
-.card h1{ margin:10px 0 5px; }
-
-.info{
-    font-size:14px;
-    opacity:0.8;
-    margin-bottom:15px;
-}
-
-.desc{
-    font-size:14px;
-    line-height:1.6;
-    text-align:justify;
-    margin-bottom:20px;
 }
 
 /* SOCIAL */
@@ -114,24 +96,17 @@ body{
     overflow:hidden;
 }
 
-.icon{
+.btn svg{
     width:24px;
     height:24px;
-    object-fit:cover;
-}
-
-/* ICON PUTIH AWAL */
-.btn img{
-    filter:brightness(0) invert(1);
+    fill:white;
     transition:0.3s;
 }
 
-/* TEXT */
 .btn span{
     margin-left:10px;
     opacity:0;
     white-space:nowrap;
-    color:white;
     transition:0.3s;
 }
 
@@ -142,34 +117,17 @@ body{
 }
 
 .btn.active span{ opacity:1; }
-.btn.active img{ filter:none; }
 
 /* WARNA */
 .whatsapp.active{ background:#25D366; }
 .instagram.active{ background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); }
 .tiktok.active{ background:#000; border:2px solid #ff0050; }
 .telegram.active{ background:#0088cc; }
-
-/* FLOAT */
-.floating{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:linear-gradient(45deg,#00f2ff,#00aaff);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-}
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
 <div class="indicator"></div>
 <ul>
@@ -180,62 +138,50 @@ body{
 </ul>
 </nav>
 
-<!-- PROFILE -->
 <div class="container">
 <div class="card">
 
-<!-- FOTO PROFIL -->
-<!-- GANTI FILE -->
 <img src="PP khusus AEG [FB62A26].png" class="pp">
 
-<h1>Razx</h1>
-
-<div class="info">
-Umur: 13 Tahun (menuju 14)<br>
-Kelas: VIII SMP
-</div>
-
-<div class="desc">
-Razx adalah seorang pelajar tingkat SMP kelas VIII yang memiliki minat besar dalam teknologi digital.
-Ia tertarik pada editing, coding, dan pengembangan website.
-<br><br>
-Selain itu, ia juga aktif dalam dunia gaming untuk melatih strategi dan fokus.
-Razx memiliki potensi besar untuk berkembang di bidang teknologi dan kreativitas digital.
-</div>
+<h2>Razx</h2>
 
 <div class="social">
 
 <!-- WHATSAPP -->
-<div class="btn whatsapp" onclick="openLink(this,'https://wa.me/6285810537050')">
-    <!-- GANTI FILE ICON -->
-    <img src="wa.jpg" class="icon">
-    <span>WhatsApp</span>
+<div class="btn whatsapp" onclick="openLink(this,'https://wa.me/')">
+<svg viewBox="0 0 24 24">
+<path d="M12 2a10 10 0 0 0-8.7 15l-1.3 5 5.1-1.3A10 10 0 1 0 12 2zm5.2 13.7c-.2.6-1.2 1.1-1.7 1.2-.4.1-.9.2-2.9-.6-2.4-1-4-3.5-4.1-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.8-2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 2 .8 2.1.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.4.5c-.1.2-.2.3 0 .5.2.3.8 1.3 1.8 2.1 1.2 1 2.1 1.3 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.2.3-.2.6-.1.2.1 1.5.7 1.8.8.3.1.5.2.5.3.1.1.1.7-.1 1.3z"/>
+</svg>
+<span>WhatsApp</span>
 </div>
 
 <!-- INSTAGRAM -->
-<div class="btn instagram" onclick="openLink(this,'https://instagram.com/its_mecakra')">
-    <img src="ig.jpg" class="icon">
-    <span>Instagram</span>
+<div class="btn instagram" onclick="openLink(this,'https://instagram.com/')">
+<svg viewBox="0 0 24 24">
+<path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.8a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0z"/>
+</svg>
+<span>Instagram</span>
 </div>
 
 <!-- TIKTOK -->
-<div class="btn tiktok" onclick="openLink(this,'https://tiktok.com/@razzziy')">
-    <img src="tiktok.jpg" class="icon">
-    <span>TikTok</span>
+<div class="btn tiktok" onclick="openLink(this,'https://tiktok.com/')">
+<svg viewBox="0 0 24 24">
+<path d="M16 2c.3 1.7 1.6 3 3.3 3.3v3c-1.3 0-2.6-.4-3.7-1.1v6.4a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v3.2a2.5 2.5 0 1 0 2.5 2.5V2h2.6z"/>
+</svg>
+<span>TikTok</span>
 </div>
 
 <!-- TELEGRAM -->
-<div class="btn telegram" onclick="openLink(this,'https://t.me/YeahIamRanzxxYty')">
-    <img src="telegram.jpg" class="icon">
-    <span>Telegram</span>
+<div class="btn telegram" onclick="openLink(this,'https://t.me/')">
+<svg viewBox="0 0 24 24">
+<path d="M9.9 16.2l-.4 3.8c.6 0 .8-.3 1.1-.6l2.6-2.5 5.4 3.9c1 .6 1.7.3 2-.9l3.6-17c.3-1.3-.5-1.8-1.4-1.5L1.5 9.6C.2 10.1.2 10.8 1.3 11.1l5.6 1.8L18.6 5c.5-.3 1-.1.6.3"/>
+</svg>
+<span>Telegram</span>
 </div>
 
 </div>
-
 </div>
 </div>
-
-<div class="floating">+</div>
 
 <script>
 // NAVBAR
@@ -246,7 +192,6 @@ function moveIndicator(el){
     indicator.style.width = el.offsetWidth + "px";
     indicator.style.left = el.offsetLeft + "px";
 }
-
 moveIndicator(document.querySelector(".active"));
 
 links.forEach(link=>{
@@ -257,7 +202,7 @@ links.forEach(link=>{
     });
 });
 
-// SOCIAL
+// BUTTON
 function openLink(el,url){
     el.classList.toggle("active");
     setTimeout(()=>window.open(url,"_blank"),300);
